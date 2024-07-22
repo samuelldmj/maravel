@@ -1,3 +1,13 @@
 <?php
 
-echo "<h1>404 File Not Found!</h1>";
+
+
+class _404 extends Controllers
+{
+
+    public function index()
+    {
+        echo "<h1>Views Not Found!</h1>";
+    }
+}
+
