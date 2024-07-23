@@ -1,7 +1,12 @@
 
-	RewriteEngine On
+RewriteEngine On
 
-	RewriteCond %{'REQUEST_FILENAME'} !-d
-	RewriteCond %{'REQUEST_FILENAME'} !-f
+# Exclude the /public/assets directory from being rewritten
+RewriteCond %{REQUEST_URI} !^/public/assets/
 
-	RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+# If the requested file or directory does not exist
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Rewrite the request to index.php
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]

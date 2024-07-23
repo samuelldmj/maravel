@@ -1,5 +1,5 @@
 <?php
-
+//This controller loads our views
 class Controllers
 {
 

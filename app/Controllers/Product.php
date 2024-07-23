@@ -4,9 +4,8 @@
 class Product extends Controllers
 {
 
-    public function index()
+    public function productIndex()
     {
-        echo "<h1>Hello from Product Controller</h1>";
 
         $this->views('product');
     }
