@@ -9,7 +9,10 @@ class Home extends Controllers
 
         $this->views('home');
         $model = new Model();
-        $model->test();
+        // $model->retrieve();
+        $arr['id'] = 1;
+        $result = $model->where($arr);
+        show($result);
     }
 }
 

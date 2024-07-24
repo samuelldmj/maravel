@@ -50,7 +50,7 @@ class App
             $this->controller = '_404';
         }
 
-        $controller = new $this->controller;
-        call_user_func_array([$controller, $this->methods], []);
+        $control = new $this->controller;
+        call_user_func_array([$control, $this->methods], []);
     }
 }
