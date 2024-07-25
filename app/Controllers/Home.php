@@ -10,8 +10,17 @@ class Home extends Controllers
         $this->views('home');
         $model = new Model();
         // $model->retrieve();
-        $arr['id'] = 1;
-        $result = $model->where($arr);
+        // $arr['id'] = 1;
+        // $arr['names'] = 'Samuel';
+        // $arr['age'] = 24;
+        // $result = $model->where($arr);
+
+        // $arr['names'] = 'Samuel';
+        // $arr['age'] = 24;
+        // $result = $model->insert($arr);
+
+        $result = $model->delete(4, 'names');
+        // $result = $model->delete(5);
         show($result);
     }
 }
