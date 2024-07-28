@@ -1,12 +1,6 @@
 <?php
 
 
-function show($par)
-{
-    echo "<pre>";
-    print_r($par);
-    echo "<pre>";
-}
 
 
 // define('ROOT', "http//:localhost/mvc/public");
@@ -32,3 +26,8 @@ if ($_SERVER['SERVER_NAME'] === 'localhost') {
     define('PASSWORD', '');
     define('ROOT', "https://www.yourwebsite.com");
 }
+
+define('APP_NAME', "WEBSITE");
+define('APP_DESC', "For practise");
+//change to false in production
+define('DEBUG', true);

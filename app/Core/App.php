@@ -1,5 +1,5 @@
 <?php
-
+//this brings all our web app functionalities together making it work
 
 // show($_SERVER['REQUEST_URI']) . PHP_EOL;
 // $url = $_GET['url'] ? 'Home' : (!$_GET['url'] ? 'Home' : 'Not working');
@@ -31,12 +31,15 @@ class App
 
     private function splitUrl()
     {
+        // $url = $_GET['url'] ?? 'Home';
         $url = !empty($_GET['url']) ? $_GET['url'] : 'Home';
-        $url =  explode("/", $url);
+        $url =  explode("/", trim($url, "/"));
         return $url;
     }
     // show(splitUrl());
 
+    //the entry point of the application
+    //it is responsible for routing request to the appropriates controller and methods
     public function loadController()
     {
         $url = $this->splitUrl();
@@ -44,13 +47,14 @@ class App
         if (file_exists($filename)) {
             require $filename;
             $this->controller = ucfirst($url[0]);
+            unset($url[0]);
         } else {
             $filename = "../app/controllers/_404.php";
             require $filename;
             $this->controller = '_404';
         }
-
+        show($url);
         $control = new $this->controller;
-        call_user_func_array([$control, $this->methods], []);
+        call_user_func_array([$control, $this->methods], $url);
     }
 }

@@ -1,24 +1,47 @@
 <?php
 
-class Model
+trait Model
 {
     use Database;
 
-    protected $table = 'users';
     protected $limit = 10;
     protected $offset = 0;
+    protected $order_type = "desc";
+    protected $order_column = 'id';
 
     public function retrieve()
     {
-        $query = "SELECT * FROM users";
+        $query = "SELECT * FROM $this->table";
         $result = $this->query($query);
         show($result);
     }
 
-    public function update($id, $data = [], $columnId = 'id')
+    public function update($id, $data = [], $columnName = 'id')
     {
-        $query = "";
+
+        if (!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+                if (!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "UPDATE $this->table  SET  ";
+        foreach ($keys as $key) {
+            $query .= $key . " = :" . $key . " , ";
+        }
+
+        $query = trim($query, " , ");
+        $query .= " WHERE $columnName = :$columnName ";
+        // echo $query;
+        $data[$columnName] = $id;
+        $this->query($query, $data);
+        return false;
     }
+
+
     public function delete($id, $columnName = 'id')
     {
         $data[$columnName] = $id;
@@ -29,6 +52,14 @@ class Model
     }
     public function insert($data)
     {
+
+        if (!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+                if (!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
         $keys = array_keys($data);
         $query = "INSERT INTO $this->table (" . implode(',', $keys) . ") VALUES (:" . implode(',:', $keys) . ") ";
         $this->query($query, $data);
@@ -49,11 +80,21 @@ class Model
         }
 
         $query = trim($query, " && ");
-        $query .= " limit $this->limit offset $this->offset";
+        $query .= " order by $this->order_type $this->order_column limit $this->limit offset $this->offset";
         // echo $query;
         $data = array_merge($data, $data_not);
         return $this->query($query, $data);
     }
+
+
+    public function findAll()
+    {
+
+        $query = " SELECT * FROM $this->table ORDER BY $this->order_column $this->order_type LIMIT $this->limit  offset $this->offset";
+        // echo $query;
+        return $this->query($query);
+    }
+
 
     public function first($data, $data_not = [])
     {

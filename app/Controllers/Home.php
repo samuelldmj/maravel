@@ -4,11 +4,13 @@
 class Home extends Controllers
 {
 
-    public function index()
+    public function index($a = '', $b = '', $c = '')
     {
-
+        show($a);
+        show($b);
+        show($c);
         $this->views('home');
-        $model = new Model();
+        // $user = new User();
         // $model->retrieve();
         // $arr['id'] = 1;
         // $arr['names'] = 'Samuel';
@@ -19,9 +21,16 @@ class Home extends Controllers
         // $arr['age'] = 24;
         // $result = $model->insert($arr);
 
-        $result = $model->delete(4, 'names');
+        // $result = $model->delete(4, 'names');
         // $result = $model->delete(5);
-        show($result);
+
+        // $arr['names'] = 'Sammy';
+        // $arr['age'] = 27;
+
+        // $result = $user->update(4, $arr);
+
+        // $result = $user->findAll();
+        // show($result);
     }
 }
 
