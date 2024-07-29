@@ -31,8 +31,8 @@ class App
 
     private function splitUrl()
     {
-        // $url = $_GET['url'] ?? 'Home';
-        $url = !empty($_GET['url']) ? $_GET['url'] : 'Home';
+        $url = $_GET['url'] ?? 'Home';
+        // $url = !empty($_GET['url']) ? $_GET['url'] : 'Home';
         $url =  explode("/", trim($url, "/"));
         return $url;
     }
@@ -43,6 +43,7 @@ class App
     public function loadController()
     {
         $url = $this->splitUrl();
+        //select controller
         $filename = "../app/controllers/" . ucfirst($url[0]) . ".php";
         if (file_exists($filename)) {
             require $filename;
@@ -53,8 +54,17 @@ class App
             require $filename;
             $this->controller = '_404';
         }
-        show($url);
+
         $control = new $this->controller;
+
+        //select methods
+        if (!empty($url[1])) {
+            if (method_exists($control, $url[1])) {
+                $this->methods = $url[1];
+                unset($url[1]);
+            }
+        }
+        show($url);
         call_user_func_array([$control, $this->methods], $url);
     }
 }

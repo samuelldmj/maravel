@@ -6,6 +6,7 @@ class Home extends Controllers
 
     public function index($a = '', $b = '', $c = '')
     {
+        show("From the Home function");
         show($a);
         show($b);
         show($c);
@@ -31,6 +32,13 @@ class Home extends Controllers
 
         // $result = $user->findAll();
         // show($result);
+    }
+
+    public function edit($a = 1, $b = 2)
+    {
+
+        show("From the edit fucntion");
+        $this->views("Home");
     }
 }
 
