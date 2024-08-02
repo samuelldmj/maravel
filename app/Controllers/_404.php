@@ -2,12 +2,13 @@
 
 
 
-class _404 extends Controllers
+class _404
+
 {
 
+    use Controllers;
     public function index()
     {
-        echo "<h1>Views Not Found!</h1>";
+        $this->views('404');
     }
 }
-

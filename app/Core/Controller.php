@@ -1,6 +1,6 @@
 <?php
 //This controller loads our views
-class Controllers
+trait Controllers
 {
 
     public function views($name)

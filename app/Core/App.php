@@ -64,7 +64,7 @@ class App
                 unset($url[1]);
             }
         }
-        show($url);
+
         call_user_func_array([$control, $this->methods], $url);
     }
 }
