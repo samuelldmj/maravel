@@ -17,7 +17,7 @@ if ($_SERVER['SERVER_NAME'] === 'localhost') {
     define('DBPASS', '');
 
 
-    define('ROOT', "http://localhost/mvc/public");
+    define('ROOT', "http://localhost/maravel/public");
 } else {
 
     define('DBNAME', 'my_db');

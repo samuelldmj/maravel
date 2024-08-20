@@ -3,12 +3,21 @@
 //files in the core folders will need run for smooth operation of your website it is the engine.
 
 spl_autoload_register(function ($className) {
-    $fileName = "../app/models/" . ucfirst($className) . ".php";
-    require $fileName;
+    $directories = [
+        '../app/models/',
+        '../app/controllers/',
+        '../app/core/',
+    ];
+
+    foreach ($directories as $directory) {
+        $fileName = $directory . ucfirst($className) . '.php';
+        if (file_exists($fileName)) {
+            require $fileName;
+            return;
+        }
+    }
 });
-require   "config.php";
-require  "functions.php";
-require "Database.php";
-require  "Model.php";
-require "Controller.php";
-require  "App.php";
+
+// Include other necessary files
+require "config.php";
+require "functions.php";
