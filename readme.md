@@ -121,6 +121,7 @@ class Home
 Using Traits
 Use traits like Controllers to share methods between controllers.
 ```
+```
 Rendering Views
 Render views from a controller:
 $this->views('view-name', ['data' => $data]);
@@ -139,6 +140,7 @@ $this->views('home', ['title' => 'Home Page']);
 
 In the view:
 <h1><?= $title ?></h1>
+```
 ```
 Models
 Creating Models
