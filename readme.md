@@ -170,7 +170,7 @@ $router->dispatch($url, $requestMethod);
 ```
 Error Handling
 The framework includes basic error handling. Customize it by editing the _404 controller.
-
+```
 ```
 Deployment
 To deploy:
