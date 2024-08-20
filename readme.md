@@ -99,12 +99,10 @@ PUT
 DELETE
 PATCH
 ```
-
 ```
 Handling 404 Errors
 The framework automatically dispatches the _404 controller's index method for unmatched routes.
 ```
-
 ```
 Controllers
 Creating Controllers
@@ -119,7 +117,6 @@ class Home
     }
 }
 ```
-
 ```
 Using Traits
 Use traits like Controllers to share methods between controllers.
@@ -128,7 +125,6 @@ Rendering Views
 Render views from a controller:
 $this->views('view-name', ['data' => $data]);
 ```
-
 ```
 Views
 Creating Views
@@ -136,7 +132,6 @@ Views are simple PHP files in app/views/.
 Example:
 <h1>Welcome to the Home Page</h1>
 ```
-
 ```
 Passing Data to Views
 Pass data from the controller to the view:
@@ -149,18 +144,15 @@ Models
 Creating Models
 Create models in app/models/. Use them to interact with the database.
 ```
-
 ```
 Database Interaction
 Extend the custom Database class for database operations.
 ```
-
 ```
 Autoloading and Initialization
 Autoloading
 The init.php file handles autoloading for models and includes core files. It’s included at the start of your application in index.php.
 ```
-
 ```
 Initialization
 Initialize your application in index.php:
@@ -173,12 +165,10 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 $router->dispatch($url, $requestMethod);
 ```
-
 ```
 Error Handling
 The framework includes basic error handling. Customize it by editing the _404 controller.
-```
-S
+
 ```
 Deployment
 To deploy:
@@ -193,7 +183,6 @@ A: Add the route to routes/routes.php using Router::get(), Router::post(), etc.
 Q: How do I handle form submissions?
 A: Define a POST route in routes.php, and create a method in the controller to process the form.
 ```
-
 ```
 Contributing
 To contribute:
@@ -203,7 +192,6 @@ To contribute:
 ## Commit your changes.
 ## Push to the branch.
 ## pen a Pull Request.
-
 ```
 
 
