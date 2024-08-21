@@ -1,4 +1,4 @@
-# Custom PHP MVC Framework
+# Maravel PHP MVC Framework
 
 ## Introduction
 
